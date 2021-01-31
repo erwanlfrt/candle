@@ -1,0 +1,75 @@
+<?php
+session_start();
+
+//database connection
+require_once 'Model/databaseConnection.php';
+use \Model\DatabaseConnection;
+$db = DatabaseConnection::getDatabaseConnection(); 
+
+/**
+ * add smell
+ * @param db database connection
+ */
+function addSmell($db){
+    if(isset($_POST['name']) && isset($_POST['smellStatus'])){ //if valid form
+
+        //avoid XSS attack
+        $name = mysqli_real_escape_string($db, htmlspecialchars($_POST['name']));
+        $status = mysqli_real_escape_string($db, htmlspecialchars($_POST['smellStatus']));
+    
+        if($name !== "" && $status !== ""){ //if inputs are not empty
+            $queryCheck = "SELECT count(*) FROM odeur WHERE nom_odeur='".$name."'";
+            $exec_requete = mysqli_query($db,$queryCheck);
+            $reponse = mysqli_fetch_array($exec_requete);
+            $count = $reponse['count(*)'];
+
+            if($count!=0){
+                header('Location: ?action=add&table=smell&erreur=2'); //smell already exist
+            }
+            else{
+                //insert smell
+                $requete = "INSERT INTO odeur (nom_odeur, statut_odeur) VALUES ('".$name."', '".$status."')";
+                $exec_requete = mysqli_query($db,$requete);
+                $reponse = mysqli_fetch_array($exec_requete);
+
+                header('Location: ?action=list&table=smell'); //go back to list
+            }
+        }
+        else{
+            header('Location: ?action=add&table=smell');
+        }
+    
+    }
+    else{
+        header('Location: ?action=add&table=smell');
+    }
+    
+}
+
+/**
+ * edit smell
+ * @param db database connection
+ */
+function editSmell($db){
+    $id = $_GET['id'];
+    
+    if(isset($_POST['update'])){
+        //avoid XSS attack
+        $name = mysqli_real_escape_string($db, htmlspecialchars($_POST['name']));
+        $smellStatus = mysqli_real_escape_string($db, htmlspecialchars($_POST['smellStatus']));
+
+        //edit
+        mysqli_query($db,"update odeur set nom_odeur='$name', statut_odeur='$smellStatus'where id_odeur='$id'");
+        mysqli_close($db); // Close connection
+        header("location: ?action=list&table=smell"); // redirects to all records page
+        exit;
+    }
+}
+
+if(isset($_POST['update'])){ //if we want to edit
+    editSmell($db);
+}
+else{ //else we want to add
+    addSmell($db);
+}
+?>

@@ -1,0 +1,88 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-Medium;
+    src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-Bold;
+    src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-SemiBold;
+    src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
+  }
+  @font-face{
+      font-family : Candle;
+      src: url('../fonts/KR\ Christmas\ Candles.ttf');
+  }
+  
+
+
+html,body{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+input{
+    outline: none;
+    border : none;
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+    height: 45px;
+    background: 0 0;
+    background: 
+      linear-gradient(#777,#777) center bottom 5px /calc(100% - 10px) 2px no-repeat;
+}
+a{
+    text-decoration: none;
+    color: #777;
+}
+.main{
+    background-color: white;
+    text-align: center;
+    width: 30%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+#title{
+    color: #333;
+    font-size: 30px;
+    font-family: Poppins-Bold;
+}
+
+.submit{
+    background: none;
+    background-color: black;
+    color : white;
+    border-radius: 10px;
+}
+.submit:hover{
+    background-color: #777;
+}
+#logo{
+    font-family: Candle;
+    font-size: 100px;
+    margin: 0;
+    margin-bottom: 5%;
+}
+
+

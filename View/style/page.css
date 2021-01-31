@@ -1,0 +1,83 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
+}
+@font-face{
+    font-family : Candle;
+    src: url('../fonts/KR\ Christmas\ Candles.ttf');
+}
+
+
+  html,body{
+    height: 100%;
+    width: 100%;
+    background-color: #ebedc5;
+    padding: 0;
+    margin: 0;
+    font-family: Poppins-Regular, Arial, Helvetica, sans-serif;
+  }
+  .menuBar{
+    background-color: white;
+    text-align: center;
+}
+#logo{
+    font-family: Candle;
+    font-size: 100px;
+    margin: 0;
+    padding : 0;
+}
+/*
+#content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.panel{
+  background-color: white;
+  border-radius: 10px;
+  width:80%;
+  margin: 10%;
+  padding : 10%
+
+}
+
+#panels{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+
+.userPanel{}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+.welcomeMessage{
+  font-size: 200%;
+}
+
+
+#adminLog{
+  background-color: red;
+}

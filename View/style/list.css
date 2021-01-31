@@ -1,0 +1,94 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-Medium;
+    src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-Bold;
+    src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-SemiBold;
+    src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
+  }
+@font-face{
+    font-family : Candle;
+    src: url('../fonts/KR\ Christmas\ Candles.ttf');
+}
+
+#logo{
+    font-family: Candle;
+    font-size: 100px;
+    margin: 0;
+}
+
+
+html, body{
+    background-color: #ebedc5;
+    padding: 0;
+    margin: 0;
+    font-family: Poppins-Regular, Arial, Helvetica, sans-serif;
+}
+
+
+#menuBar{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+    margin: 0;
+}
+
+table{
+    text-align: center;   
+    background-color: white;
+    border-spacing : 10;
+    border-collapse : collapse;
+    width: 40%;
+
+}
+td{
+    border : none;
+}
+tr{
+    border: solid;
+}
+
+table td {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+#main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+a{
+    color : inherit;
+    font-style: inherit;
+    text-decoration: inherit;
+}
+
+.authorList{
+    padding: 1%;
+}
+
+button{
+    background-color: black;
+    color: white;
+    font-size: 125%;
+    padding : 1%;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
