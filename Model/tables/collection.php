@@ -62,8 +62,30 @@ function editCollection($db){
     }
 }
 
+/**
+ * Delete collection
+ * @param db database connection
+ */
+function deleteCollection($db){
+    $id = mysqli_real_escape_string($db,htmlspecialchars($_GET['id']));
+
+    //Check if the collection is not present into candle table
+
+    $check1 = mysqli_query($db, "SELECT count(*) from candle WHERE id_collection='$id';");
+    $count = mysqli_fetch_array($check1)["count(*)"];
+
+    if($count == 0){
+        mysqli_query($db,"DELETE FROM collection WHERE id_collection='$id'");
+    }
+
+    header("location: ?action=list&table=collection"); // redirects to all records page
+}
+
 if(isset($_POST['update'])){ //if we want to update
     editCollection($db);
+}
+else if($_GET['action'] === "delete"){
+    deleteCollection($db);
 }
 else{ //else we want to add
     addCollection($db);

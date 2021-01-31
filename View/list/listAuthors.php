@@ -27,6 +27,7 @@
         <tr>
           <td class="authorList"><?php echo $data['nom_auteur']; ?></td> 
           <td><a href="?action=edit&table=author&id=<?php echo $data['id_auteur']; ?>">Edit</a></td>
+          <td><a href="?action=delete&control&table=author&id=<?php echo $data['id_auteur']; ?>">Delete</a></td>
         </tr>	
       <?php
         }

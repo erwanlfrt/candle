@@ -45,6 +45,7 @@ $db = DatabaseConnection::getDatabaseConnection();
       <td><?php echo $data['titre']; ?></td>
       <td><a href="?action=edit&table=author&id=<?php echo $author; ?>"><?php echo $name_author; ?></a></td>
       <td><a href="?action=edit&table=book&id=<?php echo $data['id_livre']; ?>">Edit</a></td>
+      <td><a href="?action=delete&control&table=book&id=<?php echo $data['id_livre']; ?>">Delete</a></td>
     </tr>	
   <?php
   }

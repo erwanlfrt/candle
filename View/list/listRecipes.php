@@ -53,6 +53,7 @@
           <td><a href="?action=edit&table=candle&id=<?php echo $candle; ?>"><?php echo $name_candle; ?></a></td>
           <td><a href="?action=edit&table=smell&id=<?php echo $smell; ?>"><?php echo $name_smell; ?></a></td>
           <td><a href="?action=edit&table=recipe&id=<?php echo $data['id_recette']; ?>">Edit</a></td>
+          <td><a href="?action=delete&table=recipe&control&id=<?php echo $data['id_recette']; ?>">Delete</a></td>
         </tr>	
       <?php
       }

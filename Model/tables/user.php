@@ -8,6 +8,7 @@ $db = DatabaseConnection::getDatabaseConnection();
 
 /**
  * edit user
+ * @param db database connection
  */
 function editUser($db){
     $id = $_GET['id'];
@@ -32,7 +33,21 @@ function editUser($db){
     
 }
 
+/**
+ * Delete user
+ * @param db database connection
+ */
+function deleteUser($db){
+    $id = mysqli_real_escape_string($db,htmlspecialchars($_GET['id']));
+    
+    mysqli_query($db,"DELETE FROM user WHERE id='$id'");
+    header("location: ?action=list&table=user"); // redirects to all records page
+}
+
 if(isset($_POST['update'])){
     editUser($db);
+}
+else{
+    deleteUser($db);
 }
 ?>

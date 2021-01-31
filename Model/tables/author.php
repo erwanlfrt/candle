@@ -70,14 +70,32 @@ function editAuthor($db){
     }
 }
 
+/**
+ * Delete author
+ * @param db database connection
+ */
 function deleteAuthor($db){
+    $id = mysqli_real_escape_string($db,htmlspecialchars($_GET['id']));
 
+    //Check if the smell is not present into book table.
+
+    $check1 = mysqli_query($db, "SELECT count(*) from livre WHERE id_auteur='$id';");
+    $count = mysqli_fetch_array($check1)["count(*)"];
+
+    if($count == 0){
+        mysqli_query($db,"DELETE FROM auteur WHERE id_auteur='$id'");
+    }
+
+    header("location: ?action=list&table=author"); // redirects to all records page
 }
 
 
 
 if(isset($_POST['update'])) { //if we want to edit
     editAuthor($db);
+}
+else if($_GET['action'] === "delete"){
+    deleteAuthor($db);
 }
 else{ //else we want to add
     addAuthor($db);

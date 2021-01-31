@@ -58,6 +58,7 @@
         <td><a href="?action=edit&table=book&id=<?php echo $book; ?>"><?php echo $title; ?></a></td>
         <td><a href="?action=edit&table=collection&id=<?php echo $collection; ?>"><?php echo $name_collection; ?></a></td>
         <td><a href="?action=edit&table=candle&id=<?php echo $data['id_bougie']; ?>">Edit</a></td>
+        <td><a href="?action=delete&control&table=candle&id=<?php echo $data['id_bougie']; ?>">Delete</a></td>
       </tr>	
     <?php
     }

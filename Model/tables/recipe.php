@@ -118,8 +118,22 @@ function editRecipe($db){
 
 }
 
+/**
+ * Delete recipe
+ * @param db database connection
+ */
+function deleteRecipe($db){
+    $id = mysqli_real_escape_string($db,htmlspecialchars($_GET['id']));
+    
+    mysqli_query($db,"DELETE FROM recette WHERE id_recette='$id'");
+    header("location: ?action=list&table=recipe"); // redirects to all records page
+}
+
 if(isset($_POST['update'])){ //if we want to update
     editRecipe($db);
+}
+else if($_GET['action'] === "delete"){
+    deleteRecipe($db);
 }
 else{ //if we want to add
     addRecipe($db);

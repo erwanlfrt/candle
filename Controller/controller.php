@@ -85,14 +85,14 @@ function stats(){
  * @param control true if you want to load the Model, false if you need to load the View.
  */
 function computeAction($action, $table, $control){
-    $actionList = array("add", "edit", "list"); //array of possible actions
+    $actionList = array("add", "delete","edit", "list"); //array of possible actions
     $tableList = array("author", "book", "candle", "collection", "event", "recipe", "smell", "user"); //array of possible tables
     if(isset($action) && isset($table)){ //If we have an action and a table...
         if(in_array($action, $actionList) && in_array($table, $tableList)){ //... and the action such as the table are valid
             if($action == "list"){
                 require("View/".$action."/".$action."".ucfirst($table)."s.php"); //require the listView if we want to list.
             }
-            else{ //If we want to edit or to add
+            else{ //If we want to edit, to add or to delete
                 if(isset($control)){
                     require("Model/tables/".$table.".php"); //load the model
                 }

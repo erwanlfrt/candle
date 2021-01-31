@@ -55,6 +55,7 @@
             if($data['role'] !== "0" && intval($_SESSION['role']) < intval($data['role'])){ //on fait en sorte qu'on ne puisse pas modifier root à tout prix et que l'on ne puisse pas modifier un utilisateur du même rôle que nous
               ?>
               <td><a href="/?action=edit&table=user&id=<?php echo $data['id']; ?>">Edit</a></td>
+              <td><a href="/?action=delete&table=user&control&id=<?php echo $data['id']; ?>">Delete</a></td>
               <?php
             } 
             ?>

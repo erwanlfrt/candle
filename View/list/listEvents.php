@@ -34,7 +34,7 @@
           <td><?php echo $data['id']; ?></td>
           <td><?php echo $data['name']; ?></td> 
           <td><a href="?action=edit&table=event&id=<?php echo $data['id']; ?>">Edit</a></td>
-          <!-- <td><a href="deleteAuthor.php?id=<?php echo $data['id']; ?>">Delete</a></td> -->
+          <td><a href="?action=delete&control&table=event&id=<?php echo $data['id']; ?>">Delete</a></td>
         </tr>	
       <?php
       }

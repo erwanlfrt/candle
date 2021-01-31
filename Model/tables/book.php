@@ -93,9 +93,31 @@ function editBook($db){
     }
 }
 
+/**
+ * Delete book
+ * @param db database connection
+ */
+function deleteBook($db){
+    $id = mysqli_real_escape_string($db,htmlspecialchars($_GET['id']));
+
+    //Check if the book is not present into candle table
+
+    $check1 = mysqli_query($db, "SELECT count(*) from bougie WHERE id_livre='$id';");
+    $count = mysqli_fetch_array($check1)["count(*)"];
+
+    if($count == 0){
+        mysqli_query($db,"DELETE FROM livre WHERE id_livre='$id'");
+    }
+
+    header("location: ?action=list&table=book"); // redirects to all records page
+}
+
 
 if(isset($_POST['update'])){ //if we want to edit
     editBook($db);
+}
+else if($_GET['action'] === "delete"){
+    deleteBook($db);
 }
 else{ //we want to add
     addBook($db);

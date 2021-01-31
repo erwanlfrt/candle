@@ -192,8 +192,33 @@ function editCandle($db){
     
 }
 
+/**
+ * Delete candle
+ * @param db database connection
+ */
+function deleteCandle($db){
+    $id = mysqli_real_escape_string($db,htmlspecialchars($_GET['id']));
+
+    //Check if the candle is not present into recipe and events tables
+
+    $check1 = mysqli_query($db, "SELECT count(*) from recipe WHERE id_bougie='$id';");
+    $count = mysqli_fetch_array($check1)["count(*)"];
+
+    $check2 = mysqli_query($db, "SELECT count(*) from events WHERE id_bougie='$id';");
+    $count2 = mysqli_fetch_array($check2)["count(*)"];
+
+    if($count == 0 && $count2 == 0){
+        mysqli_query($db,"DELETE FROM bougie WHERE id_bougie='$id'");
+    }
+
+    header("location: ?action=list&table=candle"); // redirects to all records page
+}
+
 if(isset($_POST['update'])){ //if we want to edit
     editCandle($db);
+}
+else if($_GET['action'] === "delete"){
+    deleteCandle($db);
 }
 else{ //we want to add
     addCandle($db); 

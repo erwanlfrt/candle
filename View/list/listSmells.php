@@ -38,7 +38,7 @@
         <td><?php echo $data['nom_odeur']; ?></td> 
         <td><?php echo $data['statut_odeur']; ?></td> 
         <td><a href="?action=edit&table=smell&id=<?php echo $data['id_odeur']; ?>">Edit</a></td>
-        <!-- <td><a href="deleteAuthor.php?id=<?php echo $data['id_odeur']; ?>">Delete</a></td> -->
+        <td><a href="?action=delete&table=smell&control&id=<?php echo $data['id_odeur']; ?>">Delete</a></td>
       </tr>	
       <?php
         }

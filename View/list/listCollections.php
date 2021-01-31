@@ -40,8 +40,7 @@
         <td><?php echo $data['id_collection']; ?></td>
         <td><?php echo $data['nom_collection']; ?></td> 
         <td><a href="?action=edit&table=collection&id=<?php echo $data['id_collection']; ?>">Edit</a></td>
-        <!-- <td><a href="deleteAuthor.php?id=<?php echo $data['id_collection']; ?>">Delete</a></td> -->
-      </tr>	
+        <td><a href="?action=delete&control&table=collection&id=<?php echo $data['id_collection']; ?>">Delete</a></td>
     <?php
     }
     ?>
