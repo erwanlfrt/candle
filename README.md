@@ -38,4 +38,7 @@ De plus :
   - Un utilisateur pouvant accéder à la liste des utilisateurs ne peut modifier qu'un utilisateur possédant moins de privilèges que lui.
   - Le premier utilisateur créé devient automatiquement root. Cet utilisateur ne peut être changé et il est impossible d'avoir plusieurs utilisateurs root.
   
+# Gestion du token
+
+Pour éviter toute attaque de type CSRF, la mise en place d'un token a été mise en oeuvre avec une gestion du temps également. Au bout de 5 minutes le jeton expire. En cas de manque ou d'expiration du token, l'utilisateur est redirigé vers la page d'erreur "forbidden".
 
