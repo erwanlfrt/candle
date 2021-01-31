@@ -1,5 +1,21 @@
 <?php
 session_start();
+if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token']))
+{
+	if($_SESSION['token'] == $_POST['token'])
+	{
+		$timestamp_ancien = time() - (5*60);
+		if($_SESSION['token_time'] < $timestamp_ancien)
+		{
+                header("location: ?action=forbidden");
+                exit();
+		}
+	}
+}
+else if($_GET['action'] !== "delete"){
+    header("location: ?action=forbidden");
+    exit();
+}
 
 //Database connection
 require_once 'Model/databaseConnection.php';
@@ -19,7 +35,6 @@ function addBook($db){
         $author = mysqli_real_escape_string($db, htmlspecialchars($_POST['author']));
     
         if($title !== "" && $author !== ""){ //if valid form
-
             //check if book doesn't already exist
             $queryCheck = "SELECT count(*) FROM livre WHERE titre='".$title."'";
             $exec_requete = mysqli_query($db,$queryCheck);

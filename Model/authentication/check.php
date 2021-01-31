@@ -14,7 +14,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){ //check if we have a
     $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
 
 
-    //prevent CSRF with a token.
+   //prevent CSRF with a token.
    $token = uniqid(rand(), true); //generate a token
    $_SESSION['token'] = $token;  //add token to session
    $_SESSION['token_time'] = time(); //add the token's date of creation.

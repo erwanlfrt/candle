@@ -1,4 +1,12 @@
 <?php 
+  session_start();
+  //prevent CSRF with a token.
+  $token = uniqid(rand(), true); //generate a token
+  $_SESSION['token'] = $token;  //add token to session
+  $_SESSION['token_time'] = time(); //add the token's date of creation.
+
+?>
+<?php 
     //database connection
     require_once 'Model/databaseConnection.php';
     use \Model\DatabaseConnection;
@@ -30,6 +38,7 @@
             <form action="?action=edit&table=author&control&id=<?php echo $id; ?>" method="POST">
                 <p>Modifier un auteur</p>
                 <input class="textField" type="text" name="name" value=<?php echo $name; ?> Required>
+                <input type="hidden" name="token" id="token" value="<?php echo $token;?>"/>
                 <input type="submit" id="submit" name="update" value="Update">
             </form>
         </div>

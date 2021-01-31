@@ -1,5 +1,21 @@
 <?php
 session_start();
+if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token']))
+{
+	if($_SESSION['token'] == $_POST['token'])
+	{
+		$timestamp_ancien = time() - (5*60);
+		if($_SESSION['token_time'] < $timestamp_ancien)
+		{
+                header("location: ?action=forbidden");
+                exit();
+		}
+	}
+}
+else if($_GET['action'] !== "delete"){
+    header("location: ?action=forbidden");
+    exit();
+}
 
 require_once 'Model/databaseConnection.php';
 use \Model\DatabaseConnection;

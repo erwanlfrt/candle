@@ -1,4 +1,11 @@
+<?php 
+  session_start();
+  //prevent CSRF with a token.
+  $token = uniqid(rand(), true); //generate a token
+  $_SESSION['token'] = $token;  //add token to session
+  $_SESSION['token_time'] = time(); //add the token's date of creation.
 
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,6 +38,7 @@
             </div>
       </div>
       <div class="button">
+         <input type="hidden" name="token" id="token" value="<?php echo $token;?>"/>
          <input type="submit" id='submit' value='add smell' >
       </div>
       <div>

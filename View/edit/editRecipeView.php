@@ -1,4 +1,12 @@
 <?php 
+  session_start();
+  //prevent CSRF with a token.
+  $token = uniqid(rand(), true); //generate a token
+  $_SESSION['token'] = $token;  //add token to session
+  $_SESSION['token_time'] = time(); //add the token's date of creation.
+
+?>
+<?php 
     //database connection
     require_once 'Model/databaseConnection.php';
     use \Model\DatabaseConnection;
@@ -44,6 +52,7 @@
                 <input class="textField" type="text" id="quantity" name="quantity" value=<?php echo $quantity ?>>
                 <input class="textField" type="text" id="candle" name="candle" value=<?php echo $candle_name ;?>>
                 <input class="textField" type="text" id="smell" name="smell" value=<?php echo $smell_name;?>>
+                <input type="hidden" name="token" id="token" value="<?php echo $token;?>"/>
                 <input id="submit" type="submit" name="update" value="Update">
             </form>
         </div>

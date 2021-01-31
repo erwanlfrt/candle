@@ -1,3 +1,11 @@
+<?php 
+  session_start();
+  //prevent CSRF with a token.
+  $token = uniqid(rand(), true); //generate a token
+  $_SESSION['token'] = $token;  //add token to session
+  $_SESSION['token_time'] = time(); //add the token's date of creation.
+
+?>
 <?php
   require_once 'Model/databaseConnection.php';
   use \Model\DatabaseConnection;
@@ -59,7 +67,8 @@
 
       </div>
       <div class="button">
-         <input type="submit" id='submit' value='add candle' >
+          <input type="hidden" name="token" id="token" value="<?php echo $token;?>"/>
+          <input type="submit" id='submit' value='add candle' >
       </div>
       <div>
       <?php
@@ -92,7 +101,14 @@
         } ?>
   </body>
 
-  <script>
+  <script><?php 
+  session_start();
+  //prevent CSRF with a token.
+  $token = uniqid(rand(), true); //generate a token
+  $_SESSION['token'] = $token;  //add token to session
+  $_SESSION['token_time'] = time(); //add the token's date of creation.
+
+?>
     var divEvents = document.getElementById("listEvents");
 
     /**
